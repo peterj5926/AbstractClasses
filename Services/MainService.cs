@@ -1,5 +1,6 @@
 ﻿using System;
-
+using AbstractClasses.Library;
+using AbstractClasses.MediaSelection;
 namespace ApplicationTemplate.Services;
 
 /// <summary>
@@ -16,26 +17,9 @@ public class MainService : IMainService
 
     public void Invoke()
     {
-        string choice;
-        do
-        {
-            Console.WriteLine("1) Add Movie");
-            Console.WriteLine("2) Display All Movies");
-            Console.WriteLine("X) Quit");
-            choice = Console.ReadLine();
-
-            // Logic would need to exist to validate inputs and data prior to writing to the file
-            // You would need to decide where this logic would reside.
-            // Is it part of the FileService or some other service?
-            if (choice == "1")
-            {
-                _fileService.Write();
-            }
-            else if (choice == "2")
-            {
-                _fileService.Read();
-            }
-        }
-        while (choice != "X");
+        MediaSelection selection = new MediaSelection();
+        selection.Search();
+        
+       
     }
 }
